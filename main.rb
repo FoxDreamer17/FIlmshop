@@ -1,24 +1,16 @@
 require_relative 'lib/product'
-require_relative 'lib/movie'
 require_relative 'lib/book'
+require_relative 'lib/movie'
 
-products = []
+# Создадим несколько продуктов и поменяем их с помощью сеттеров и метода update
+movie = Movie.new(title: 'Леон', director: 'Люк Бессон', price: 990)
+movie.year = 1994
+movie.update(amount: 5)
 
-products << Movie.new(
-  title: 'Матрица', year:'1999', director:"Джоэл Сильвер", price: 1000, amount: 20
-)
-products << Movie.new(
-  title: 'Дурак', year: '2014', director: 'Юрий Быков', price: 390, amount: 1
-)
+book = Book.new(title: 'Идиот', genre: 'роман', amount: 10)
+book.author = 'Федька Достоевский'
+book.update(author: 'Фёдор Достоевский', price: 1500)
 
-products << Book.new(
-  title: 'Идиот',
-  genre: 'роман',
-  author: 'Федор Достоевский',
-  price: 1500,
-  amount: 10
-)
-
-puts 'Вот какие товары у нас есть:'
-puts
-products.each { |product| puts product }
+# Выведем результат на экран
+puts movie
+puts book

@@ -2,15 +2,17 @@ require_relative 'lib/product'
 require_relative 'lib/book'
 require_relative 'lib/movie'
 
-# Создадим несколько продуктов и поменяем их с помощью сеттеров и метода update
-movie = Movie.new(title: 'Леон', director: 'Люк Бессон', price: 990)
-movie.year = 1994
-movie.update(amount: 5)
+current_path = File.dirname(__FILE__)
+movie = Movie.from_file(current_path + '/data/films/01.txt')
+book = Book.from_file(current_path + '/data/books/01.txt')
 
-book = Book.new(title: 'Идиот', genre: 'роман', amount: 10)
-book.author = 'Федька Достоевский'
-book.update(author: 'Фёдор Достоевский', price: 1500)
 
 # Выведем результат на экран
 puts movie
 puts book
+
+begin
+  Product.from_file(current_path + '/data/films/01.txt')
+rescue NotImplementedError
+  puts 'Метод класса Product.from_file не реализован'
+end
